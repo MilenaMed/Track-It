@@ -1,48 +1,94 @@
-import logo from "../img/Logo.png"
-import styled from "styled-components"
-import { Link } from "react-router-dom"
-
+import logo from "../img/Logo.png";
+import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { PulseLoader } from "react-spinners";
+import axios from "axios";
 
 function Cadastro() {
+
+    const [nomeUsuario, setNome] = useState("");
+    const [emailUsuario, setEmail] = useState("");
+    const [fotoPerfil, setFoto] = useState("");
+    const [senhaUsuario, setSenha] = useState("");
+    const navigate = useNavigate();
+    const [carregar, setCarregar] = useState(false);
+
+    function passarDados(event) {
+        event.preventDefault()
+        setCarregar(true);
+
+        const dados = {
+            email: "emailUsuario",
+            name:" nomeUsuario",
+            image:" fotoPerfil",
+            password: "senhaUsuario"
+        };
+
+        if (emailUsuario.length > 0 && nomeUsuario.length > 0 && fotoPerfil.length > 0) {
+            const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
+                dados)
+            requisicao.then(() => {
+                setCarregar(false)
+                navigate("/")
+            })
+            requisicao.catch((erro) => {
+                alert(`Verifique se as informações foram digitadas corretamente!${erro}`)
+                setCarregar(false)
+            })
+        }
+    };
     return (
         <>
-
             <Conteiner>
                 <img src={logo} alt="logo" />
                 <ConteinerInputs>
                     <Input
+                        value={emailUsuario}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={carregar}
+                        data-test="email-input"
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="email"
                     />
                     <Input
+                        value={senhaUsuario}
+                        onChange={(e) => setSenha(e.target.value)}
+                        disabled={carregar}
+                        data-test="password-input"
                         id="senha"
                         name="senha"
                         type="password"
-                        placeholder="senha"
                     />
-                     <Input
+                    <Input
+                        value={nomeUsuario}
+                        onChange={(e) => setNome(e.target.value)}
+                        disabled={carregar}
+                        data-test="user-name-input"
                         id="name"
                         name="name"
                         type="name"
-                        placeholder="nome"
                     />
-                     <Input
+                    <Input
+                        value={fotoPerfil}
+                        onChange={(e) => setFoto(e.target.value)}
+                        disabled={carregar}
+                        data-test="user-image-input"
                         id="foto"
                         name="foto"
-                        type="url"
-                        placeholder="foto"
+                        type="name"
                     />
-                    <BotãoCadastrar>
-                        Cadastrar
+                    <BotãoCadastrar data-test="signup-btn" disabled={carregar} onClick={passarDados}>
+                        {carregar && <PulseLoader color="#FFFFFF" carregar={carregar} margin={8} size={15} />}
+                        {!carregar && "Cadastrar"}
                     </BotãoCadastrar>
                 </ConteinerInputs>
-                
-                    <StyledLink to="/">
-                        Já tem conta? Faça login!
-                    </StyledLink>
-            
+
+                <StyledLink data-test="login-link" to="/">
+                    Já tem conta? Faça login!
+                </StyledLink>
+
             </Conteiner>
         </>
     )

@@ -5,24 +5,16 @@ function Hoje() {
     return (
         <>
             <ConteinerHoje>
-                <h1>Segunda, 18/12</h1>
-                Nenhum hábito concluído ainda
+                <h1 data-test="today">Segunda, 18/12</h1>
+                <p data-test="today-counter">Nenhum hábito concluído ainda</p>
                 <ConteinerHabitoHoje>
-                    <HabitoHoje>
+                    <HabitoHoje data-test="today-habit-container">
                         <DadosHAbito>
-                            <p>Ler um livro</p>
-                            <h1> Sequencia atual: 3 dias</h1>
-                            <h1> Seu Recorde: 5 dias</h1>
+                            <p data-test="today-habit-name">Ler um livro</p>
+                            <h1 data-test="today-habit-sequence"> Sequencia atual: 3 dias</h1>
+                            <h1 data-test="today-habit-record"> Seu Recorde: 5 dias</h1>
                         </DadosHAbito>
-                        <Icon><img src={icon} alt="checkIcon"/></Icon>
-                    </HabitoHoje>
-                    <HabitoHoje>
-                        <DadosHAbito>
-                            <p>Ler um livro</p>
-                            <h1> Sequencia atual: 3 dias</h1>
-                            <h1> Seu Recorde: 5 dias</h1>
-                        </DadosHAbito>
-                        <Icon><img src={icon} alt="checkIcon"/></Icon>
+                        <Icon data-test="today-habit-check-btn"><img src={icon} alt="checkIcon"/></Icon>
                     </HabitoHoje>
                 </ConteinerHabitoHoje>
             </ConteinerHoje>

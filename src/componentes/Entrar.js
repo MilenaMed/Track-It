@@ -9,24 +9,26 @@ function Entrar() {
                 <img src={logo} alt="logo" />
                 <ConteinerInputs>
                     <Input
+                        data-test="email-input"
                         id="email"
                         name="email"
                         type="email"
                         placeholder="email"
                     />
                     <Input
+                        data-test="password-input"
                         id="senha"
                         name="senha"
                         type="password"
                         placeholder="senha"
                     />
-                    <BotãoEntrar>
+                    <BotãoEntrar data-test="login-btn">
                         <LinkEntrar to="/habitos">
                             Entrar
                         </LinkEntrar>
                     </BotãoEntrar>
                 </ConteinerInputs>
-                <StyledLink to="/cadastro">
+                <StyledLink to="/cadastro" data-test="signup-link">
                     Não tem uma conta? Cadastre-se
                 </StyledLink>
             </Conteiner>

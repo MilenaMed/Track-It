@@ -6,9 +6,9 @@ function Rodape() {
     return (
         <>
             <ConteinerRodape>
-                <Content>
-                    <StyledLink to="/habitos">Hábitos</StyledLink>
-                    <Link to="/hoje">
+                <Content data-test="menu">
+                    <StyledLink data-test="habits-link" to="/habitos">Hábitos</StyledLink>
+                    <Link data-test="today-link" to="/hoje">
                         <div>
                             <CircularProgressbar
                                 text="Hoje"
@@ -23,7 +23,7 @@ function Rodape() {
                             />
                         </div>
                     </Link>
-                    <StyledLink to="/historico">Histórico</StyledLink>
+                    <StyledLink data-test="history-link" to="/historico">Histórico</StyledLink>
                 </Content>
             </ConteinerRodape>
         </>

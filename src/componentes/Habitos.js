@@ -8,12 +8,13 @@ function Habitos() {
             <ConteinerHabitos>
                 <Conteiner>
                     <h1>Meus hábitos</h1>
-                    <BotaoAddHAbito>
+                    <BotaoAddHAbito data-test="habit-create-btn">
                         <img src={adicionar} alt="IconAdd" />
                     </BotaoAddHAbito>
                 </Conteiner>
-                <AddHabito>
+                <AddHabito data-test="habit-create-container">
                     <Input
+                        data-test="habit-name-input"
                         id="habito"
                         name="habito"
                         type="name"
@@ -21,14 +22,14 @@ function Habitos() {
                     />
                     <ConteinerDias>
                         {dias.map((dia) => (
-                            <BotãoDia>
+                            <BotãoDia data-test="habit-day">
                                 {dia}
                             </BotãoDia>
                         ))}
                     </ConteinerDias>
                     <ConterinerBotões>
-                        <CancelarBotão>Cancelar</CancelarBotão>
-                        <SalvarBotão>Salvar</SalvarBotão>
+                        <CancelarBotão data-test="habit-create-cancel-btn">Cancelar</CancelarBotão>
+                        <SalvarBotão data-test="habit-create-save-btn" >Salvar</SalvarBotão>
                     </ConterinerBotões>
                 </AddHabito>
                 Você não possui nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
